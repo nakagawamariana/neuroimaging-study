@@ -25,13 +25,12 @@ class Correlation(ScriptedLoadableModule):
     self.parent.title = "Correlation" # TODO make this more human readable by adding spaces
     self.parent.categories = ["Examples"]
     self.parent.dependencies = []
-    self.parent.contributors = ["John Doe (AnyWare Corp.)"] # replace with "Firstname Lastname (Organization)"
+    self.parent.contributors = ["Mariana Nakagawa, María Pardo, Gema Pérez"] # replace with "Firstname Lastname (Organization)"
     self.parent.helpText = """
     This is an example of scripted loadable module bundled in an extension.
     """
     self.parent.acknowledgementText = """
-    This file was originally developed by Jean-Christophe Fillion-Robin, Kitware Inc.
-    and Steve Pieper, Isomics, Inc. and was partially funded by NIH grant 3P41RR013218-12S1.
+    This file was developed for academical purposes
 """ # replace with organization, grant and thanks.
 
 #
@@ -125,7 +124,7 @@ class CorrelationWidget(ScriptedLoadableModuleWidget):
     #logic.run(inputVolume, input2Volume)
 
     result = logic.run(inputVolume, input2Volume)
-    qt.QMessageBox.information(slicer.util.mainWindow(),'jejeje',round(result,4))
+    qt.QMessageBox.information(slicer.util.mainWindow(),'The correlation value is:',round(result,4))
 #
 # CorrelationLogic
 #
@@ -167,7 +166,7 @@ class CorrelationLogic(ScriptedLoadableModuleLogic):
     
     sus1 = image1 - a
     sus2 = image2 - b
-    sus2r = np.resize(sus2, sus1.shape)
+    
 
     matrix = (sus1*sus2)/den
 
